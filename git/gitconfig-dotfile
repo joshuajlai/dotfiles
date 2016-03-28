@@ -1,0 +1,10 @@
+[user]
+	email = joshuajlai@gmail.com
+	name = joshuajlai
+[push]
+	default = simple
+[core]
+    editor = /usr/bin/vim
+[alias]
+    lol = log --pretty=format:\"%C(yellow)%h%Creset%C(cyan)%C(bold)%d%Creset %C(cyan)(%ci)%Creset %C(green)%ce%Creset %s\" --abbrev-commit --graph --decorate 
+    lola = log --pretty=oneline --abbrev-commit --graph --decorate --all
