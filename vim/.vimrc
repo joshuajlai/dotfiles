@@ -74,7 +74,8 @@ set wildmenu
 set showmatch           " higlight matching parenthesis
 " }}}
 " Searching {{{
-set ignorecase          " ignore case when searching
+set smartcase
+"set ignorecase          " ignore case when searching
 set hlsearch            " highlight all matches
 " }}}
 " Backups {{{
@@ -90,7 +91,7 @@ set writebackup
 " highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " }}}
 
-autocmd BufWritePre *.sql,*.vimrc,*.php,*.py,*.js,*.feature,*.xml :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup above.
 function! <SID>StripTrailingWhitespaces()
