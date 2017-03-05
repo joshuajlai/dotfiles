@@ -1,6 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,40 +6,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+Bundle 'ntpeters/vim-better-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
 
 " Douglas Black
 " Colors {{{
@@ -52,8 +19,6 @@ colorscheme badwolf
 " Misc {{{
 set ttyfast                     " faster redraw
 set backspace=indent,eol,start
-set ruler
-set rulerformat=%l,%v
 " }}}
 " Spaces & Tabs {{{
 set tabstop=4           " 4 space tab
@@ -61,7 +26,7 @@ set expandtab           " use spaces for tabs
 set softtabstop=4       " 4 space tab
 set shiftwidth=4
 set modelines=1
-filetype indent on
+"filetype indent on
 filetype plugin on
 set autoindent
 " }}}
@@ -72,9 +37,9 @@ set nocursorline          " highlight current line
 set wildmenu
 "set lazyredraw
 set showmatch           " higlight matching parenthesis
+set ruler
 " }}}
 " Searching {{{
-set smartcase
 "set ignorecase          " ignore case when searching
 set hlsearch            " highlight all matches
 " }}}
@@ -85,15 +50,23 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
-
-" 80 char line {{{
-" set colorcolumn=80
-" highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-" }}}
-
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" AutoGroups {{{
+augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear SignColumn
+    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb,*.sql,*.feature,*.yml,*.xml :call <SID>StripTrailingWhitespaces()
+    autocmd BufEnter *.cls setlocal filetype=java
+    autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+augroup END
+" Custom Functions {{{
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup above.
+function! <SID>StripTrailingWhitespaces2()
+endfunction
 function! <SID>StripTrailingWhitespaces()
     " save last search & cursor position
     let _s=@/
@@ -103,3 +76,8 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+" }}}
+" 100 char line {{{
+" set colorcolumn=100
+" highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+" }}}
