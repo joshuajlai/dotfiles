@@ -1,3 +1,4 @@
+PS1='\u@\h:\w\$ '
 GPG_TTY=$(tty)
 export GPG_TTY
 
