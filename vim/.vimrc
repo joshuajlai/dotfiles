@@ -21,10 +21,10 @@ set ttyfast                     " faster redraw
 set backspace=indent,eol,start
 " }}}
 " Spaces & Tabs {{{
-set tabstop=4           " 4 space tab
+set tabstop=2           " 2 space tab
 set expandtab           " use spaces for tabs
-set softtabstop=4       " 4 space tab
-set shiftwidth=4
+set softtabstop=2       " 2 space tab
+set shiftwidth=2
 set modelines=1
 "filetype indent on
 filetype plugin on
@@ -54,13 +54,19 @@ set writebackup
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
-    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb,*.sql,*.feature,*.yml,*.xml :call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+    autocmd BufEnter *.tf,*.tfvars setlocal filetype=terraform
+    autocmd BufEnter *.scala setlocal filetype=scala
     autocmd BufEnter Makefile setlocal noexpandtab
-    autocmd BufEnter *.sh setlocal tabstop=2
-    autocmd BufEnter *.sh setlocal shiftwidth=2
-    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd BufEnter *.php,*.py,*.js,*.txt,*.hs,*.java,*.sql,*.feature setlocal tabstop=4
+    autocmd BufEnter *.php,*.py,*.js,*.txt,*.hs,*.java,*.sql,*.feature setlocal shiftwidth=4
+    autocmd BufEnter *.php,*.py,*.js,*.txt,*.hs,*.java,*.sql,*.feature setlocal softtabstop=4
+    autocmd BufEnter Dockerfile setlocal tabstop=4
+    autocmd BufEnter Dockerfile setlocal shiftwidth=4
+    autocmd BufEnter Dockerfile setlocal softtabstop=4
+    autocmd BufEnter *.py setlocal filetype=python
 augroup END
 " Custom Functions {{{
 " strips trailing whitespace at the end of files. this
@@ -81,3 +87,7 @@ endfunction
 " set colorcolumn=100
 " highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " }}}
+"
+" show tabs
+set list
+set listchars=tab:>-
