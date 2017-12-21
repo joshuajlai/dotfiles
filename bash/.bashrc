@@ -13,7 +13,7 @@ eval "$(rbenv init -)"
 
 # set up go
 export GOPATH=~/Documents/workspace/grindr/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:~/bin
 
 # load brew's curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
@@ -30,3 +30,7 @@ alias grindr='cd ~/Documents/workspace/grindr'
 alias grindrgo='cd ~/Documents/workspace/grindr/go/src/github.com/grindrllc'
 alias current_date="date -u '+%Y-%m-%d %H:%M:%S%z'"
 alias clear_dns="sudo killall -HUP mDNSResponder"
+alias git_clear_merged="git branch --merged | egrep -v \"(^\*|master|develop)\" | xargs git branch -d"
+
+# added by travis gem
+[ -f /Users/joshualai/.travis/travis.sh ] && source /Users/joshualai/.travis/travis.sh
