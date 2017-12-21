@@ -59,7 +59,7 @@ augroup configgroup
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter *.tf,*.tfvars setlocal filetype=terraform
     autocmd BufEnter *.scala setlocal filetype=scala
-    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter Makefile,*.md setlocal noexpandtab
     autocmd BufEnter *.php,*.py,*.js,*.txt,*.hs,*.java,*.sql,*.feature setlocal tabstop=4
     autocmd BufEnter *.php,*.py,*.js,*.txt,*.hs,*.java,*.sql,*.feature setlocal shiftwidth=4
     autocmd BufEnter *.php,*.py,*.js,*.txt,*.hs,*.java,*.sql,*.feature setlocal softtabstop=4
