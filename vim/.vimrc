@@ -67,6 +67,7 @@ augroup configgroup
     autocmd BufEnter Dockerfile setlocal shiftwidth=4
     autocmd BufEnter Dockerfile setlocal softtabstop=4
     autocmd BufEnter *.py setlocal filetype=python
+    autocmd BufEnter *.json.tpl setlocal filetype=json
 augroup END
 " Custom Functions {{{
 " strips trailing whitespace at the end of files. this

@@ -24,6 +24,10 @@ export PATH="~/Documents/workspace/grindr/bin:$PATH"
 # load openvpn
 export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
+# load brew's coreutils
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 alias gpg=gpg2
 alias vi=vim
 alias grindr='cd ~/Documents/workspace/grindr'
@@ -33,4 +37,4 @@ alias clear_dns="sudo killall -HUP mDNSResponder"
 alias git_clear_merged="git branch --merged | egrep -v \"(^\*|master|develop)\" | xargs git branch -d"
 
 # added by travis gem
-[ -f /Users/joshualai/.travis/travis.sh ] && source /Users/joshualai/.travis/travis.sh
+[ -f /Users/joshua/.travis/travis.sh ] && source /Users/joshua/.travis/travis.sh
