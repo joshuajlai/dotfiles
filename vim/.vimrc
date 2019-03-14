@@ -6,7 +6,14 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Bundle 'ntpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-bundler'
+Plugin 'tpope/vim-cucumber'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'fatih/vim-go'
+Plugin 'ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,6 +75,7 @@ augroup configgroup
     autocmd BufEnter Dockerfile setlocal softtabstop=4
     autocmd BufEnter *.py setlocal filetype=python
     autocmd BufEnter *.json.tpl setlocal filetype=json
+    autocmd BufEnter *.asmx setlocal filetype=xml
 augroup END
 " Custom Functions {{{
 " strips trailing whitespace at the end of files. this
