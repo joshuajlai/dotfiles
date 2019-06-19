@@ -1,42 +1,23 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-bundler'
-Plugin 'tpope/vim-cucumber'
-Plugin 'jremmen/vim-ripgrep'
-Plugin 'fatih/vim-go'
-Plugin 'ctrlp.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-
 " Douglas Black
 " Colors {{{
 syntax enable           " enable syntax processing
 colorscheme badwolf
 " }}}
+
 " Misc {{{
 set ttyfast                     " faster redraw
 set backspace=indent,eol,start
 " }}}
+
 " Spaces & Tabs {{{
 set tabstop=2           " 2 space tab
 set expandtab           " use spaces for tabs
 set softtabstop=2       " 2 space tab
 set shiftwidth=2
 set modelines=1
-"filetype indent on
-filetype plugin on
 set autoindent
 " }}}
+
 " UI Layout {{{
 set number              " show line numbers
 set showcmd             " show command in bottom bar
@@ -46,10 +27,12 @@ set wildmenu
 set showmatch           " higlight matching parenthesis
 set ruler
 " }}}
+
 " Searching {{{
 "set ignorecase          " ignore case when searching
 set hlsearch            " highlight all matches
 " }}}
+
 " Backups {{{
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -57,6 +40,7 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
+
 " AutoGroups {{{
 augroup configgroup
     autocmd!
@@ -77,6 +61,8 @@ augroup configgroup
     autocmd BufEnter *.json.tpl setlocal filetype=json
     autocmd BufEnter *.asmx setlocal filetype=xml
 augroup END
+" Autogroups }}}
+
 " Custom Functions {{{
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup above.
@@ -100,3 +86,29 @@ endfunction
 " show tabs
 set list
 set listchars=tab:>-
+
+" VUNDLE {{{ 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-cucumber'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'ctrlp.vim'
+Plugin 'hhvm/vim-hack'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on
+" }}} VUNDLE 
