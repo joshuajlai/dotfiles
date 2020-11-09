@@ -1,3 +1,5 @@
+export PS1='\[\e[31m\]\u@\h:\[\e[32m\]\w \[\e[0m\]$'
+
 # gpg nonsense
 # gpg-connect-agent /bye
 GPG_TTY=$(tty)
