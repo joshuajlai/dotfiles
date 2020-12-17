@@ -3,3 +3,5 @@ alias clear_dns="sudo killall -HUP mDNSResponder"
 alias git_clear_merged="git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
 alias workspace="cd ~/workspace"
 export PATH=$PATH:$HOME/workspace/joshuajlai/randos
+
+alias git_delete_squashed='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
