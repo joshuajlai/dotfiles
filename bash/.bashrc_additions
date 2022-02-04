@@ -55,4 +55,18 @@ alias b64_print='pbpaste | base64 --decode'
 export PATH=$PATH:$GOPATH/bin:~/bin
 
 # delete squashed and merged branches
-alias git_delete_squashed='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+function git_delete_squashed () {
+  main_branch=$1
+  git checkout -q ${main_branch}
+  git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do
+    mergeBase=$(git merge-base ${main_branch} $branch)
+    if [[ $(git cherry ${main_branch} $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]]; then
+      git branch -D $branch
+    fi
+  done
+}
+
+function pyclean () {
+  find . -type f -name "*.py[co]" -delete
+  find . -type d -name "__pycache__" -delete
+}
