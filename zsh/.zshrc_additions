@@ -1,5 +1,5 @@
 alias current_date="date -u '+%Y-%m-%d %H:%M:%S%z'"
-alias clear_dns="sudo killall -HUP mDNSResponder"
+alias clear_dns="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 alias git_clear_merged="git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
 alias workspace="cd ~/workspace"
 export PATH=$PATH:$HOME/workspace/joshuajlai/randos
